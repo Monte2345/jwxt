@@ -7,6 +7,7 @@ import com.example.jwxt.support.returnEntity.ServerReturnObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,7 +22,7 @@ public class StudentControllerImpl implements StudentController {
     @Autowired
     private StudentService studentService;
 
-    @RequestMapping("/studentLogin")
+    @PostMapping("/studentLogin")
     public ServerReturnObject login(HttpServletRequest request, Student student,String check) throws Exception {
         HttpSession session = request.getSession(true);
         if(check==null||check.equals(""))
@@ -29,6 +30,7 @@ public class StudentControllerImpl implements StudentController {
             return ServerReturnObject.createErrorByMessage("验证码为空！");
         }
         String code = session.getAttribute("VerifyCode").toString();
+
         LOGGER.info(check);
         if (code.equalsIgnoreCase(check)) {
             return studentService.login(student);

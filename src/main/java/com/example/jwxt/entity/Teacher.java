@@ -7,7 +7,9 @@ public class Teacher {
 
     private String name;
 
-    private Integer pwd;
+    private String pwd;
+
+    private String identity;
 
     public Integer getId() {
         return id;
@@ -33,11 +35,19 @@ public class Teacher {
         this.name = name == null ? null : name.trim();
     }
 
-    public Integer getPwd() {
+    public String getPwd() {
         return pwd;
     }
 
-    public void setPwd(Integer pwd) {
-        this.pwd = pwd;
+    public void setPwd(String pwd) {
+        this.pwd = pwd == null ? null : pwd.trim();
+    }
+
+    public String getIdentity() {
+        return identity;
+    }
+
+    public void setIdentity(String identity) {
+        this.identity = identity == null ? null : identity.trim();
     }
 }

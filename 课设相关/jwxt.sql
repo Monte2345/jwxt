@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： localhost
--- 生成日期： 2021-01-05 20:46:14
+-- 生成日期： 2021-01-06 13:12:54
 -- 服务器版本： 5.7.26
 -- PHP 版本： 7.3.4
 
@@ -84,7 +84,7 @@ CREATE TABLE `teacher` (
   `id` int(11) NOT NULL COMMENT '教师id',
   `tno` int(11) NOT NULL COMMENT '教工号',
   `name` varchar(20) COLLATE utf8_unicode_ci NOT NULL COMMENT '教师名字',
-  `pwd` int(50) NOT NULL COMMENT '教师密码',
+  `pwd` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT '教师密码',
   `identity` varchar(10) COLLATE utf8_unicode_ci NOT NULL COMMENT '教师身份（系主任、课程负责人'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -93,7 +93,7 @@ CREATE TABLE `teacher` (
 --
 
 INSERT INTO `teacher` (`id`, `tno`, `name`, `pwd`, `identity`) VALUES
-(1, 1806, '老古', 123456, '');
+(1, 1806, '老古', '123456', '课程负责人');
 
 -- --------------------------------------------------------
 
@@ -131,6 +131,12 @@ ALTER TABLE `student_course`
   ADD PRIMARY KEY (`id`);
 
 --
+-- 表的索引 `teacher`
+--
+ALTER TABLE `teacher`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- 表的索引 `teacher_course`
 --
 ALTER TABLE `teacher_course`
@@ -157,6 +163,12 @@ ALTER TABLE `student`
 --
 ALTER TABLE `student_course`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '选课id';
+
+--
+-- 使用表AUTO_INCREMENT `teacher`
+--
+ALTER TABLE `teacher`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '教师id', AUTO_INCREMENT=2;
 
 --
 -- 使用表AUTO_INCREMENT `teacher_course`

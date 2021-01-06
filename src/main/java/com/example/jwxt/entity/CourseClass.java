@@ -1,13 +1,13 @@
 package com.example.jwxt.entity;
 
-public class TeacherCourse {
+public class CourseClass {
     private Integer id;
 
-    private Integer tno;
-
-    private String timePeriod;
+    private Integer cno;
 
     private String curriculaVariable;
+
+    private String timePeriod;
 
     public Integer getId() {
         return id;
@@ -17,20 +17,12 @@ public class TeacherCourse {
         this.id = id;
     }
 
-    public Integer getTno() {
-        return tno;
+    public Integer getCno() {
+        return cno;
     }
 
-    public void setTno(Integer tno) {
-        this.tno = tno;
-    }
-
-    public String getTimePeriod() {
-        return timePeriod;
-    }
-
-    public void setTimePeriod(String timePeriod) {
-        this.timePeriod = timePeriod == null ? null : timePeriod.trim();
+    public void setCno(Integer cno) {
+        this.cno = cno;
     }
 
     public String getCurriculaVariable() {
@@ -39,5 +31,13 @@ public class TeacherCourse {
 
     public void setCurriculaVariable(String curriculaVariable) {
         this.curriculaVariable = curriculaVariable == null ? null : curriculaVariable.trim();
+    }
+
+    public String getTimePeriod() {
+        return timePeriod;
+    }
+
+    public void setTimePeriod(String timePeriod) {
+        this.timePeriod = timePeriod == null ? null : timePeriod.trim();
     }
 }

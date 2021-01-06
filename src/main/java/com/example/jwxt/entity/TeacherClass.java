@@ -1,11 +1,11 @@
 package com.example.jwxt.entity;
 
-public class StudentCourse {
+public class TeacherClass {
     private Integer id;
 
-    private Integer sno;
+    private Integer tno;
 
-    private Byte grade;
+    private String timePeriod;
 
     private String curriculaVariable;
 
@@ -17,20 +17,20 @@ public class StudentCourse {
         this.id = id;
     }
 
-    public Integer getSno() {
-        return sno;
+    public Integer getTno() {
+        return tno;
     }
 
-    public void setSno(Integer sno) {
-        this.sno = sno;
+    public void setTno(Integer tno) {
+        this.tno = tno;
     }
 
-    public Byte getGrade() {
-        return grade;
+    public String getTimePeriod() {
+        return timePeriod;
     }
 
-    public void setGrade(Byte grade) {
-        this.grade = grade;
+    public void setTimePeriod(String timePeriod) {
+        this.timePeriod = timePeriod == null ? null : timePeriod.trim();
     }
 
     public String getCurriculaVariable() {

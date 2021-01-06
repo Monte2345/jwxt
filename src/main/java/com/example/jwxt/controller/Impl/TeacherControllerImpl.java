@@ -34,7 +34,6 @@ public class TeacherControllerImpl implements TeacherController {
             return teacherService.login(teacher);
         }else {
             return ServerReturnObject.createErrorByMessage("验证码错误！");
-
         }
     }
 }

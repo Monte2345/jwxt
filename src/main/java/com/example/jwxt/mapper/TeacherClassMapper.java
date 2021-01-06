@@ -1,6 +1,6 @@
 package com.example.jwxt.mapper;
 
-import com.example.jwxt.entity.TeacherCourse;
+import com.example.jwxt.entity.TeacherClass;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.InsertProvider;
@@ -11,28 +11,28 @@ import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.annotations.UpdateProvider;
 import org.apache.ibatis.type.JdbcType;
 
-public interface TeacherCourseMapper {
+public interface TeacherClassMapper {
     @Delete({
-        "delete from teacher_course",
+        "delete from teacher_class",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int deleteByPrimaryKey(Integer id);
 
     @Insert({
-        "insert into teacher_course (id, tno, ",
+        "insert into teacher_class (id, tno, ",
         "time_period, curricula_variable)",
         "values (#{id,jdbcType=INTEGER}, #{tno,jdbcType=INTEGER}, ",
         "#{timePeriod,jdbcType=VARCHAR}, #{curriculaVariable,jdbcType=VARCHAR})"
     })
-    int insert(TeacherCourse record);
+    int insert(TeacherClass record);
 
-    @InsertProvider(type=TeacherCourseSqlProvider.class, method="insertSelective")
-    int insertSelective(TeacherCourse record);
+    @InsertProvider(type=TeacherClassSqlProvider.class, method="insertSelective")
+    int insertSelective(TeacherClass record);
 
     @Select({
         "select",
         "id, tno, time_period, curricula_variable",
-        "from teacher_course",
+        "from teacher_class",
         "where id = #{id,jdbcType=INTEGER}"
     })
     @Results({
@@ -41,17 +41,17 @@ public interface TeacherCourseMapper {
         @Result(column="time_period", property="timePeriod", jdbcType=JdbcType.VARCHAR),
         @Result(column="curricula_variable", property="curriculaVariable", jdbcType=JdbcType.VARCHAR)
     })
-    TeacherCourse selectByPrimaryKey(Integer id);
+    TeacherClass selectByPrimaryKey(Integer id);
 
-    @UpdateProvider(type=TeacherCourseSqlProvider.class, method="updateByPrimaryKeySelective")
-    int updateByPrimaryKeySelective(TeacherCourse record);
+    @UpdateProvider(type=TeacherClassSqlProvider.class, method="updateByPrimaryKeySelective")
+    int updateByPrimaryKeySelective(TeacherClass record);
 
     @Update({
-        "update teacher_course",
+        "update teacher_class",
         "set tno = #{tno,jdbcType=INTEGER},",
           "time_period = #{timePeriod,jdbcType=VARCHAR},",
           "curricula_variable = #{curriculaVariable,jdbcType=VARCHAR}",
         "where id = #{id,jdbcType=INTEGER}"
     })
-    int updateByPrimaryKey(TeacherCourse record);
+    int updateByPrimaryKey(TeacherClass record);
 }

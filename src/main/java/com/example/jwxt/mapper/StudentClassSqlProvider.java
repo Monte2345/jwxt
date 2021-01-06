@@ -1,12 +1,12 @@
 package com.example.jwxt.mapper;
 
-import com.example.jwxt.entity.StudentCourse;
+import com.example.jwxt.entity.StudentClass;
 import org.apache.ibatis.jdbc.SQL;
 
-public class StudentCourseSqlProvider {
-    public String insertSelective(StudentCourse record) {
+public class StudentClassSqlProvider {
+    public String insertSelective(StudentClass record) {
         SQL sql = new SQL();
-        sql.INSERT_INTO("student_course");
+        sql.INSERT_INTO("student_class");
         
         if (record.getId() != null) {
             sql.VALUES("id", "#{id,jdbcType=INTEGER}");
@@ -27,9 +27,9 @@ public class StudentCourseSqlProvider {
         return sql.toString();
     }
 
-    public String updateByPrimaryKeySelective(StudentCourse record) {
+    public String updateByPrimaryKeySelective(StudentClass record) {
         SQL sql = new SQL();
-        sql.UPDATE("student_course");
+        sql.UPDATE("student_class");
         
         if (record.getSno() != null) {
             sql.SET("sno = #{sno,jdbcType=INTEGER}");

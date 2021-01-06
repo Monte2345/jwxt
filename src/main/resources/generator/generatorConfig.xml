@@ -55,20 +55,10 @@ type：选择怎么生成mapper接口（在MyBatis3/MyBatis3Simple下）：
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
-        <!--设置要将数据库中的那张表逆向生成哪一个Javabean，tableName为数据库表名，domainObjectName为实体类-->
-        <table tableName="teacher_course" domainObjectName="TeacherCourse" enableDeleteByExample="false" enableCountByExample="false"
-               enableSelectByExample="false" enableUpdateByExample="false"/>
+
 
         <!--设置要将数据库中的那张表逆向生成哪一个Javabean，tableName为数据库表名，domainObjectName为实体类-->
-        <table tableName="student_course" domainObjectName="StudentCourse" enableDeleteByExample="false" enableCountByExample="false"
-               enableSelectByExample="false" enableUpdateByExample="false"/>
-
-        <!--设置要将数据库中的那张表逆向生成哪一个Javabean，tableName为数据库表名，domainObjectName为实体类-->
-        <table tableName="course" domainObjectName="Course" enableDeleteByExample="false" enableCountByExample="false"
-               enableSelectByExample="false" enableUpdateByExample="false"/>
-
-        <!--设置要将数据库中的那张表逆向生成哪一个Javabean，tableName为数据库表名，domainObjectName为实体类-->
-        <table tableName="teaching_class" domainObjectName="TeachingClass" enableDeleteByExample="false" enableCountByExample="false"
+        <table tableName="course_class" domainObjectName="CourseClass" enableDeleteByExample="false" enableCountByExample="false"
                enableSelectByExample="false" enableUpdateByExample="false"/>
     </context>
 </generatorConfiguration>

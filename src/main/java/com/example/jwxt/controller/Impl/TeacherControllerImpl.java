@@ -24,7 +24,7 @@ public class TeacherControllerImpl implements TeacherController {
     @RequestMapping("/teacherLogin")
     public ServerReturnObject login(HttpServletRequest request, Teacher teacher, String check) throws Exception {
         HttpSession session = request.getSession(true);
-        if(check==null)
+        if(check==null||check.equals(""))
         {
             return ServerReturnObject.createErrorByMessage("验证码为空！");
         }

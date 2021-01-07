@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： localhost
--- 生成日期： 2021-01-06 14:45:14
+-- 生成日期： 2021-01-07 11:41:29
 -- 服务器版本： 5.7.26
 -- PHP 版本： 7.3.4
 
@@ -38,6 +38,63 @@ CREATE TABLE `course` (
   `class_hours` tinyint(5) NOT NULL COMMENT '学时'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- 转存表中的数据 `course`
+--
+
+INSERT INTO `course` (`id`, `cno`, `name`, `credit`, `type`, `status`, `class_hours`) VALUES
+(1, 131800701, '高级英语', 2, '专业选修', '选课', 32),
+(2, 180600032, 'IT项目管理', 2, '专业选修', '选课', 32),
+(3, 180600037, '嵌入式系统', 3, '专业选修', '选课', 48),
+(4, 180600065, '自然语言处理', 2, '专业选修', '选课', 32),
+(5, 180600075, '机器人导论', 3, '专业选修', '选课', 48),
+(6, 180600078, '高级数学', 4, '专业必修', '选课', 64),
+(7, 180600068, '计算机视觉与模式识别', 3, '专业必修', '选课', 48);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `course_class`
+--
+
+CREATE TABLE `course_class` (
+  `id` int(11) NOT NULL COMMENT '课程安排id',
+  `cno` int(11) NOT NULL COMMENT '课程号',
+  `curricula_variable` varchar(20) COLLATE utf8_unicode_ci NOT NULL COMMENT '教学班号',
+  `time_period` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT '课程安排时间段'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 转存表中的数据 `course_class`
+--
+
+INSERT INTO `course_class` (`id`, `cno`, `curricula_variable`, `time_period`) VALUES
+(1, 131800701, '131800701-1', 'Tue.Wed|7-8.1-2'),
+(2, 131800701, '131800701-2', 'Tue.Wed|1-2.3-4'),
+(3, 180600032, '180600032-1', 'Mon.Wed|7-8.5-6'),
+(4, 180600037, '180600037-1', 'Fri|3-4'),
+(5, 180600065, '180600065-1', 'Thu|5-6'),
+(6, 180600075, '180600075-1', 'Tue|3-4'),
+(7, 180600078, '180600078-1', 'Mon.Fri|7-8.3-4'),
+(8, 180600068, '180600068-1', 'Wed|9-11');
+
+-- --------------------------------------------------------
+
+--
+-- 替换视图以便查看 `c_c`
+-- （参见下面的实际视图）
+--
+CREATE TABLE `c_c` (
+`course_name` varchar(20)
+,`course_cno` int(11)
+,`type` varchar(20)
+,`credit` tinyint(4)
+,`curricula_variable` varchar(20)
+,`time_period` varchar(100)
+,`teacher_name` varchar(20)
+,`tno` int(11)
+);
+
 -- --------------------------------------------------------
 
 --
@@ -63,10 +120,10 @@ INSERT INTO `student` (`id`, `sno`, `name`, `student_class`, `gpa`, `pwd`) VALUE
 -- --------------------------------------------------------
 
 --
--- 表的结构 `student_course`
+-- 表的结构 `student_class`
 --
 
-CREATE TABLE `student_course` (
+CREATE TABLE `student_class` (
   `id` int(11) NOT NULL COMMENT '选课id',
   `sno` int(11) NOT NULL COMMENT '学号',
   `grade` tinyint(5) NOT NULL COMMENT '成绩',
@@ -92,20 +149,40 @@ CREATE TABLE `teacher` (
 --
 
 INSERT INTO `teacher` (`id`, `tno`, `name`, `pwd`, `identity`) VALUES
-(1, 1806, '老古', '123456', '课程负责人');
+(1, 20210102, '老古', '123456', '课程负责人'),
+(2, 20210103, '老刘', '123456', '课程负责人'),
+(3, 20210104, '老李', '123456', '系主任'),
+(4, 20210105, '老张', '123456', '任课老师'),
+(5, 20210106, '老王', '123456', '任课老师'),
+(6, 20210107, '老吴', '123456', '任课老师'),
+(7, 20210108, '老周', '123456', '任课老师');
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `teacher_course`
+-- 表的结构 `teacher_class`
 --
 
-CREATE TABLE `teacher_course` (
+CREATE TABLE `teacher_class` (
   `id` int(11) NOT NULL COMMENT '任课id',
   `tno` int(11) NOT NULL COMMENT '教工号',
   `time_period` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT '任课时间段',
   `curricula_variable` varchar(20) COLLATE utf8_unicode_ci NOT NULL COMMENT '教学班号'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 转存表中的数据 `teacher_class`
+--
+
+INSERT INTO `teacher_class` (`id`, `tno`, `time_period`, `curricula_variable`) VALUES
+(1, 20210102, '1-16|Tue.Wed|7-8.1-2', '131800701-1'),
+(2, 20210103, '1-16|Tue.Wed|1-2.3-4', '131800701-2'),
+(3, 20210104, '1-16|Mon.Wed|7-8.5-6', '180600032-1'),
+(4, 20210105, '1-16|Fri|3-4', '180600037-1'),
+(5, 20210106, '1-16|Thu|5-6', '180600065-1'),
+(6, 20210107, '1-16|Tue|3-4', '180600075-1'),
+(7, 20210108, '1-16|Mon.Fri|7-8.3-4', '180600078-1'),
+(8, 20210108, '1-16|Wed|9-11', '180600068-1');
 
 -- --------------------------------------------------------
 
@@ -115,9 +192,31 @@ CREATE TABLE `teacher_course` (
 
 CREATE TABLE `teaching_class` (
   `id` int(11) NOT NULL COMMENT '课程安排id',
-  `cno` int(11) NOT NULL COMMENT '课程号',
   `curricula_variable` varchar(20) COLLATE utf8_unicode_ci NOT NULL COMMENT '教学班号'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 转存表中的数据 `teaching_class`
+--
+
+INSERT INTO `teaching_class` (`id`, `curricula_variable`) VALUES
+(1, '131800701-1'),
+(2, '131800701-2'),
+(3, '180600032-1'),
+(4, '180600037-1'),
+(5, '180600065-1'),
+(6, '180600075-1'),
+(7, '180600078-1'),
+(8, '180600068-1');
+
+-- --------------------------------------------------------
+
+--
+-- 视图结构 `c_c`
+--
+DROP TABLE IF EXISTS `c_c`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `c_c`  AS  select `course`.`name` AS `course_name`,`course`.`cno` AS `course_cno`,`course`.`type` AS `type`,`course`.`credit` AS `credit`,`course_class`.`curricula_variable` AS `curricula_variable`,`course_class`.`time_period` AS `time_period`,`teacher`.`name` AS `teacher_name`,`teacher_class`.`tno` AS `tno` from (((`course` join `course_class`) join `teacher_class`) join `teacher`) where ((`course`.`cno` = `course_class`.`cno`) and (`course_class`.`curricula_variable` = `teacher_class`.`curricula_variable`) and (`teacher_class`.`tno` = `teacher`.`tno`)) ;
 
 --
 -- 转储表的索引
@@ -130,15 +229,21 @@ ALTER TABLE `course`
   ADD PRIMARY KEY (`id`);
 
 --
+-- 表的索引 `course_class`
+--
+ALTER TABLE `course_class`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- 表的索引 `student`
 --
 ALTER TABLE `student`
   ADD PRIMARY KEY (`id`);
 
 --
--- 表的索引 `student_course`
+-- 表的索引 `student_class`
 --
-ALTER TABLE `student_course`
+ALTER TABLE `student_class`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -148,9 +253,9 @@ ALTER TABLE `teacher`
   ADD PRIMARY KEY (`id`);
 
 --
--- 表的索引 `teacher_course`
+-- 表的索引 `teacher_class`
 --
-ALTER TABLE `teacher_course`
+ALTER TABLE `teacher_class`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -167,7 +272,13 @@ ALTER TABLE `teaching_class`
 -- 使用表AUTO_INCREMENT `course`
 --
 ALTER TABLE `course`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '课程id';
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '课程id', AUTO_INCREMENT=8;
+
+--
+-- 使用表AUTO_INCREMENT `course_class`
+--
+ALTER TABLE `course_class`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '课程安排id', AUTO_INCREMENT=9;
 
 --
 -- 使用表AUTO_INCREMENT `student`
@@ -176,28 +287,28 @@ ALTER TABLE `student`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '学生id', AUTO_INCREMENT=2;
 
 --
--- 使用表AUTO_INCREMENT `student_course`
+-- 使用表AUTO_INCREMENT `student_class`
 --
-ALTER TABLE `student_course`
+ALTER TABLE `student_class`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '选课id';
 
 --
 -- 使用表AUTO_INCREMENT `teacher`
 --
 ALTER TABLE `teacher`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '教师id', AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '教师id', AUTO_INCREMENT=8;
 
 --
--- 使用表AUTO_INCREMENT `teacher_course`
+-- 使用表AUTO_INCREMENT `teacher_class`
 --
-ALTER TABLE `teacher_course`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '任课id';
+ALTER TABLE `teacher_class`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '任课id', AUTO_INCREMENT=9;
 
 --
 -- 使用表AUTO_INCREMENT `teaching_class`
 --
 ALTER TABLE `teaching_class`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '课程安排id';
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '课程安排id', AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -9,6 +9,10 @@ public class CourseClass {
 
     private String timePeriod;
 
+    private Integer capacity;
+
+    private Integer enrollment;
+
     public Integer getId() {
         return id;
     }
@@ -39,5 +43,21 @@ public class CourseClass {
 
     public void setTimePeriod(String timePeriod) {
         this.timePeriod = timePeriod == null ? null : timePeriod.trim();
+    }
+
+    public Integer getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(Integer capacity) {
+        this.capacity = capacity;
+    }
+
+    public Integer getEnrollment() {
+        return enrollment;
+    }
+
+    public void setEnrollment(Integer enrollment) {
+        this.enrollment = enrollment;
     }
 }

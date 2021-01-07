@@ -1,6 +1,8 @@
 package com.example.jwxt.service.Impl;
 
+import com.example.jwxt.entity.CourseClass;
 import com.example.jwxt.entity.StudentClass;
+import com.example.jwxt.mapper.CourseClassMapper;
 import com.example.jwxt.mapper.StudentClassMapper;
 import com.example.jwxt.service.StudentClassService;
 import com.example.jwxt.support.returnEntity.ServerReturnObject;
@@ -13,6 +15,8 @@ import java.util.Map;
 public class StudentClassServiceImpl implements StudentClassService {
     @Autowired
     private StudentClassMapper studentClassMapper;
+    @Autowired
+    private CourseClassMapper courseClassMapper;
     @Override
     public ServerReturnObject insert(Integer sno, String curriculaVariable) {
         StudentClass studentClass = new StudentClass();
@@ -20,6 +24,13 @@ public class StudentClassServiceImpl implements StudentClassService {
         studentClass.setCurriculaVariable(curriculaVariable);
         studentClass.setGrade((byte)0);
         studentClassMapper.insert(studentClass);
+        //更新选课人数
+        Integer enrollment = studentClassMapper.getEnrollment(curriculaVariable);
+        Integer id = courseClassMapper.findIdByCurricula(curriculaVariable);
+        CourseClass courseClass  = new CourseClass();
+        courseClass.setId(id);
+        courseClass.setEnrollment(enrollment);
+        courseClassMapper.updateByPrimaryKeySelective(courseClass);
         return ServerReturnObject.createSuccessByMessage("选课成功！");
     }
 
@@ -57,6 +68,14 @@ public class StudentClassServiceImpl implements StudentClassService {
         if(id==null){
             return ServerReturnObject.createErrorByMessage("选课记录不存在！");
         }
-        return ServerReturnObject.createSuccessByMessageAndData("删除成功！",studentClassMapper.deleteByPrimaryKey(id));
+        studentClassMapper.deleteByPrimaryKey(id);
+        //更新选课人数
+        Integer enrollment = studentClassMapper.getEnrollment(curriculaVariable);
+        Integer ccid = courseClassMapper.findIdByCurricula(curriculaVariable);
+        CourseClass courseClass  = new CourseClass();
+        courseClass.setId(ccid);
+        courseClass.setEnrollment(enrollment);
+        courseClassMapper.updateByPrimaryKeySelective(courseClass);
+        return ServerReturnObject.createSuccessByMessage("删除成功！");
     }
 }

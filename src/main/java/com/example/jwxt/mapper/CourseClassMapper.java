@@ -6,7 +6,6 @@ import org.apache.ibatis.type.JdbcType;
 
 import java.util.List;
 import java.util.Map;
-
 @Mapper
 public interface CourseClassMapper {
     @Delete({
@@ -17,9 +16,11 @@ public interface CourseClassMapper {
 
     @Insert({
         "insert into course_class (id, cno, ",
-        "curricula_variable, time_period)",
+        "curricula_variable, time_period, ",
+        "capacity, enrollment)",
         "values (#{id,jdbcType=INTEGER}, #{cno,jdbcType=INTEGER}, ",
-        "#{curriculaVariable,jdbcType=VARCHAR}, #{timePeriod,jdbcType=VARCHAR})"
+        "#{curriculaVariable,jdbcType=VARCHAR}, #{timePeriod,jdbcType=VARCHAR}, ",
+        "#{capacity,jdbcType=INTEGER}, #{enrollment,jdbcType=INTEGER})"
     })
     int insert(CourseClass record);
 
@@ -28,7 +29,7 @@ public interface CourseClassMapper {
 
     @Select({
         "select",
-        "id, cno, curricula_variable, time_period",
+        "id, cno, curricula_variable, time_period, capacity, enrollment",
         "from course_class",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -36,7 +37,9 @@ public interface CourseClassMapper {
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
         @Result(column="cno", property="cno", jdbcType=JdbcType.INTEGER),
         @Result(column="curricula_variable", property="curriculaVariable", jdbcType=JdbcType.VARCHAR),
-        @Result(column="time_period", property="timePeriod", jdbcType=JdbcType.VARCHAR)
+        @Result(column="time_period", property="timePeriod", jdbcType=JdbcType.VARCHAR),
+        @Result(column="capacity", property="capacity", jdbcType=JdbcType.INTEGER),
+        @Result(column="enrollment", property="enrollment", jdbcType=JdbcType.INTEGER)
     })
     CourseClass selectByPrimaryKey(Integer id);
 
@@ -47,7 +50,9 @@ public interface CourseClassMapper {
         "update course_class",
         "set cno = #{cno,jdbcType=INTEGER},",
           "curricula_variable = #{curriculaVariable,jdbcType=VARCHAR},",
-          "time_period = #{timePeriod,jdbcType=VARCHAR}",
+          "time_period = #{timePeriod,jdbcType=VARCHAR},",
+          "capacity = #{capacity,jdbcType=INTEGER},",
+          "enrollment = #{enrollment,jdbcType=INTEGER}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(CourseClass record);
@@ -64,4 +69,11 @@ public interface CourseClassMapper {
                     "where curricula_variable = #{curriculaVariable,jdbcType=VARCHAR}"
     })
     Integer findCnoByCurricula(String curriculaVariable);
+
+    @Select({
+            "select id",
+            "from course_class " +
+                    "where curricula_variable = #{curriculaVariable,jdbcType=VARCHAR}"
+    })
+    Integer findIdByCurricula(String curriculaVariable);
 }

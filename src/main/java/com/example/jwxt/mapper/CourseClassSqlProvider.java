@@ -24,6 +24,14 @@ public class CourseClassSqlProvider {
             sql.VALUES("time_period", "#{timePeriod,jdbcType=VARCHAR}");
         }
         
+        if (record.getCapacity() != null) {
+            sql.VALUES("capacity", "#{capacity,jdbcType=INTEGER}");
+        }
+        
+        if (record.getEnrollment() != null) {
+            sql.VALUES("enrollment", "#{enrollment,jdbcType=INTEGER}");
+        }
+        
         return sql.toString();
     }
 
@@ -41,6 +49,14 @@ public class CourseClassSqlProvider {
         
         if (record.getTimePeriod() != null) {
             sql.SET("time_period = #{timePeriod,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getCapacity() != null) {
+            sql.SET("capacity = #{capacity,jdbcType=INTEGER}");
+        }
+        
+        if (record.getEnrollment() != null) {
+            sql.SET("enrollment = #{enrollment,jdbcType=INTEGER}");
         }
         
         sql.WHERE("id = #{id,jdbcType=INTEGER}");

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： localhost
--- 生成日期： 2021-01-07 17:41:38
+-- 生成日期： 2021-01-07 20:44:25
 -- 服务器版本： 5.7.26
 -- PHP 版本： 7.3.4
 
@@ -61,22 +61,24 @@ CREATE TABLE `course_class` (
   `id` int(11) NOT NULL COMMENT '课程安排id',
   `cno` int(11) NOT NULL COMMENT '课程号',
   `curricula_variable` varchar(20) COLLATE utf8_unicode_ci NOT NULL COMMENT '教学班号',
-  `time_period` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT '课程安排时间段'
+  `time_period` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT '课程安排时间段',
+  `capacity` int(11) NOT NULL COMMENT '课程容量',
+  `enrollment` int(11) NOT NULL COMMENT '报名人数'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- 转存表中的数据 `course_class`
 --
 
-INSERT INTO `course_class` (`id`, `cno`, `curricula_variable`, `time_period`) VALUES
-(1, 131800701, '131800701-1', 'Tue.Wed|7-8.1-2'),
-(2, 131800701, '131800701-2', 'Tue.Wed|1-2.3-4'),
-(3, 180600032, '180600032-1', 'Mon.Wed|7-8.5-6'),
-(4, 180600037, '180600037-1', 'Fri|3-4'),
-(5, 180600065, '180600065-1', 'Thu|5-6'),
-(6, 180600075, '180600075-1', 'Tue|3-4'),
-(7, 180600078, '180600078-1', 'Mon.Fri|7-8.3-4'),
-(8, 180600068, '180600068-1', 'Wed|9-11');
+INSERT INTO `course_class` (`id`, `cno`, `curricula_variable`, `time_period`, `capacity`, `enrollment`) VALUES
+(1, 131800701, '131800701-1', 'Tue.Wed|7-8.1-2', 100, 2),
+(2, 131800701, '131800701-2', 'Tue.Wed|1-2.3-4', 100, 1),
+(3, 180600032, '180600032-1', 'Mon.Wed|7-8.5-6', 100, 1),
+(4, 180600037, '180600037-1', 'Fri|3-4', 100, 0),
+(5, 180600065, '180600065-1', 'Thu|5-6', 100, 0),
+(6, 180600075, '180600075-1', 'Tue|3-4', 100, 0),
+(7, 180600078, '180600078-1', 'Mon.Fri|7-8.3-4', 100, 1),
+(8, 180600068, '180600068-1', 'Wed|9-11', 100, 1);
 
 -- --------------------------------------------------------
 
@@ -93,6 +95,8 @@ CREATE TABLE `c_c` (
 ,`timePeriod` varchar(100)
 ,`teacherName` int(11)
 ,`tno` varchar(20)
+,`capacity` int(11)
+,`enrollment` int(11)
 );
 
 -- --------------------------------------------------------
@@ -142,7 +146,8 @@ INSERT INTO `student_class` (`id`, `sno`, `grade`, `curricula_variable`) VALUES
 (4, 1806100119, 0, '131800701-1'),
 (5, 1806100120, 0, '131800701-2'),
 (7, 1806100118, 0, '180600032-1'),
-(8, 1806100118, 0, '180600078-1');
+(8, 1806100118, 0, '180600078-1'),
+(15, 1806100119, 0, '180600068-1');
 
 -- --------------------------------------------------------
 
@@ -247,7 +252,7 @@ INSERT INTO `teaching_class` (`id`, `curricula_variable`) VALUES
 --
 DROP TABLE IF EXISTS `c_c`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `c_c`  AS  select `course`.`name` AS `courseName`,`course`.`cno` AS `courseCno`,`course`.`type` AS `type`,`course`.`credit` AS `credit`,`course_class`.`curricula_variable` AS `curriculaVariable`,`course_class`.`time_period` AS `timePeriod`,`teacher_class`.`tno` AS `teacherName`,`teacher`.`name` AS `tno` from (((`course` join `course_class`) join `teacher_class`) join `teacher`) where ((`course`.`cno` = `course_class`.`cno`) and (`course_class`.`curricula_variable` = `teacher_class`.`curricula_variable`) and (`teacher_class`.`tno` = `teacher`.`tno`) and (`course`.`type` = '专业选修')) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `c_c`  AS  select `course`.`name` AS `courseName`,`course`.`cno` AS `courseCno`,`course`.`type` AS `type`,`course`.`credit` AS `credit`,`course_class`.`curricula_variable` AS `curriculaVariable`,`course_class`.`time_period` AS `timePeriod`,`teacher_class`.`tno` AS `teacherName`,`teacher`.`name` AS `tno`,`course_class`.`capacity` AS `capacity`,`course_class`.`enrollment` AS `enrollment` from (((`course` join `course_class`) join `teacher_class`) join `teacher`) where ((`course`.`cno` = `course_class`.`cno`) and (`course_class`.`curricula_variable` = `teacher_class`.`curricula_variable`) and (`teacher_class`.`tno` = `teacher`.`tno`) and (`course`.`type` = '专业选修')) ;
 
 -- --------------------------------------------------------
 
@@ -330,7 +335,7 @@ ALTER TABLE `student`
 -- 使用表AUTO_INCREMENT `student_class`
 --
 ALTER TABLE `student_class`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '选课id', AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '选课id', AUTO_INCREMENT=16;
 
 --
 -- 使用表AUTO_INCREMENT `teacher`

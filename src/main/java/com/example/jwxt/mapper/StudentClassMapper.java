@@ -86,4 +86,12 @@ public interface StudentClassMapper {
             @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
     })
     Integer selectIdBySnoAndCurriculaVariable(Integer sno,String curriculaVariable);
+
+    @Select({
+            "select count(*)",
+            "from student_class",
+            "where ",
+            "curricula_variable = #{curriculaVariable,jdbcType=VARCHAR}"
+    })
+    Integer getEnrollment(String curriculaVariable);
 }

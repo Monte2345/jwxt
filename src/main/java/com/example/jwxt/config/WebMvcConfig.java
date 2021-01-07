@@ -13,7 +13,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .allowedHeaders("*")
                 .allowedMethods("*")
                 .maxAge(30*1000)
-               .allowCredentials(true);
+                .allowCredentials(true);
     }
 
 }

@@ -1109,3 +1109,17 @@ Consider defining a bean of type 'com.example.jwxt.mapper.CourseClassMapper' in 
 2021-01-07 20:41:27.337  WARN 18476 --- [http-nio-8080-exec-5] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@2178090d (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
 2021-01-07 20:41:27.353  WARN 18476 --- [http-nio-8080-exec-5] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@2a650f34 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
 2021-01-07 20:41:27.360  WARN 18476 --- [http-nio-8080-exec-5] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@392bce42 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2021-01-07 20:45:38.521  INFO 18216 --- [restartedMain] com.example.jwxt.JwxtApplication         : Starting JwxtApplication using Java 1.8.0_144 on DESKTOP-VVJU2QV with PID 18216 (D:\jwxt\target\classes started by ASUS in D:\jwxt)
+2021-01-07 20:45:38.556  INFO 18216 --- [restartedMain] com.example.jwxt.JwxtApplication         : The following profiles are active: mysql,mybatis,logging,wx
+2021-01-07 20:45:38.742  INFO 18216 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-01-07 20:45:38.743  INFO 18216 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-01-07 20:45:43.105  INFO 18216 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-01-07 20:45:43.127  INFO 18216 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-01-07 20:45:43.128  INFO 18216 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-01-07 20:45:43.549  INFO 18216 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-01-07 20:45:43.550  INFO 18216 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4804 ms
+2021-01-07 20:45:44.563  INFO 18216 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-07 20:45:44.912  WARN 18216 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2021-01-07 20:45:45.182  INFO 18216 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-01-07 20:45:45.339  INFO 18216 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-07 20:45:45.372  INFO 18216 --- [restartedMain] com.example.jwxt.JwxtApplication         : Started JwxtApplication in 9.04 seconds (JVM running for 21.552)

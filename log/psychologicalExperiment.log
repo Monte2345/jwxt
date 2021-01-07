@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2021-01-07 09:16:07.184  INFO 11332 --- [restartedMain] com.example.jwxt.JwxtApplication         : Starting JwxtApplication using Java 1.8.0_144 on DESKTOP-VVJU2QV with PID 11332 (D:\jwxt\target\classes started by ASUS in D:\jwxt)
 2021-01-07 09:16:07.238  INFO 11332 --- [restartedMain] com.example.jwxt.JwxtApplication         : The following profiles are active: mysql,mybatis,logging,wx
 2021-01-07 09:16:07.739  INFO 11332 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
@@ -664,3 +665,113 @@ java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check th
 2021-01-07 17:15:24.482  INFO 21040 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
 2021-01-07 17:15:24.861  INFO 21040 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
 2021-01-07 17:15:25.375  INFO 21040 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+=======
+2021-01-07 08:47:19.605  INFO 13432 --- [restartedMain] com.example.jwxt.JwxtApplication         : Starting JwxtApplication using Java 11.0.7 on DESKTOP-DDA6OUO with PID 13432 (C:\Users\AAS\Desktop\大三上课设\教务系统后端\jwxt\target\classes started by AAS in C:\Users\AAS\Desktop\大三上课设\教务系统后端\jwxt)
+2021-01-07 08:47:19.637  INFO 13432 --- [restartedMain] com.example.jwxt.JwxtApplication         : The following profiles are active: mysql,mybatis,logging,wx
+2021-01-07 08:47:19.806  INFO 13432 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-01-07 08:47:19.806  INFO 13432 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-01-07 08:47:23.561  INFO 13432 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-01-07 08:47:23.589  INFO 13432 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-01-07 08:47:23.589  INFO 13432 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-01-07 08:47:23.857  INFO 13432 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-01-07 08:47:23.857  INFO 13432 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4047 ms
+2021-01-07 08:47:25.888  INFO 13432 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-07 08:47:26.475  WARN 13432 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2021-01-07 08:47:26.931  INFO 13432 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-01-07 08:47:27.049  INFO 13432 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-07 08:47:27.082  INFO 13432 --- [restartedMain] com.example.jwxt.JwxtApplication         : Started JwxtApplication in 9.35 seconds (JVM running for 13.005)
+2021-01-07 08:55:12.347  INFO 13432 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-01-07 08:55:12.355  INFO 13432 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-01-07 08:55:12.375  INFO 13432 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 20 ms
+2021-01-07 08:55:14.024  INFO 13432 --- [http-nio-8080-exec-1] c.e.j.c.Impl.CheckControllerImpl         : RBPC
+2021-01-07 08:55:14.714  WARN 13432 --- [http-nio-8080-exec-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [678] milliseconds.
+2021-01-07 08:55:15.326  INFO 13432 --- [http-nio-8080-exec-2] c.e.j.c.Impl.CheckControllerImpl         : 75ZP
+2021-01-07 08:55:27.385  INFO 13432 --- [http-nio-8080-exec-6] c.e.j.c.Impl.CheckControllerImpl         : 123
+2021-01-07 08:55:45.966  INFO 13432 --- [http-nio-8080-exec-8] c.e.j.c.Impl.CheckControllerImpl         : 4XG8
+2021-01-07 08:55:56.552  INFO 13432 --- [http-nio-8080-exec-10] c.e.j.c.Impl.CheckControllerImpl         : 4xg8
+2021-01-07 08:55:56.626  INFO 13432 --- [http-nio-8080-exec-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-01-07 08:55:57.608  INFO 13432 --- [http-nio-8080-exec-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-01-07 08:56:39.370  INFO 13432 --- [http-nio-8080-exec-2] c.e.j.c.Impl.CheckControllerImpl         : RQJG
+2021-01-07 08:56:52.847  INFO 13432 --- [http-nio-8080-exec-4] c.e.j.c.Impl.CheckControllerImpl         : rqjg
+2021-01-07 08:56:57.638  INFO 13432 --- [http-nio-8080-exec-6] c.e.j.c.Impl.CheckControllerImpl         : rqjg
+2021-01-07 08:57:02.234  INFO 13432 --- [http-nio-8080-exec-7] c.e.j.c.Impl.CheckControllerImpl         : rqjg
+2021-01-07 09:02:43.822  INFO 13432 --- [http-nio-8080-exec-9] c.e.j.c.Impl.CheckControllerImpl         : 4BJ7
+2021-01-07 09:02:54.012  INFO 13432 --- [http-nio-8080-exec-1] c.e.j.c.Impl.CheckControllerImpl         : 4bj7
+2021-01-07 09:09:09.999  INFO 13432 --- [http-nio-8080-exec-3] c.e.j.c.Impl.CheckControllerImpl         : L3XY
+2021-01-07 09:09:31.028  INFO 13432 --- [http-nio-8080-exec-4] c.e.j.c.Impl.CheckControllerImpl         : l3xy
+2021-01-07 09:11:15.338  INFO 13432 --- [http-nio-8080-exec-6] c.e.j.c.Impl.CheckControllerImpl         : LKXW
+2021-01-07 09:11:22.097  INFO 13432 --- [http-nio-8080-exec-8] c.e.j.c.Impl.CheckControllerImpl         : lkxw
+2021-01-07 09:33:37.279  INFO 25236 --- [restartedMain] com.example.jwxt.JwxtApplication         : Starting JwxtApplication using Java 11.0.7 on DESKTOP-DDA6OUO with PID 25236 (C:\Users\AAS\Desktop\大三上课设\教务系统后端\jwxt\target\classes started by AAS in C:\Users\AAS\Desktop\大三上课设\教务系统后端\jwxt)
+2021-01-07 09:33:37.288  INFO 25236 --- [restartedMain] com.example.jwxt.JwxtApplication         : The following profiles are active: mysql,mybatis,logging,wx
+2021-01-07 09:33:37.431  INFO 25236 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-01-07 09:33:37.432  INFO 25236 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-01-07 09:33:41.503  INFO 25236 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-01-07 09:33:41.538  INFO 25236 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-01-07 09:33:41.540  INFO 25236 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-01-07 09:33:41.878  INFO 25236 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-01-07 09:33:41.879  INFO 25236 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4445 ms
+2021-01-07 09:33:42.847  INFO 25236 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-07 09:33:43.203  WARN 25236 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2021-01-07 09:33:43.590  INFO 25236 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-01-07 09:33:43.682  INFO 25236 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-07 09:33:43.710  INFO 25236 --- [restartedMain] com.example.jwxt.JwxtApplication         : Started JwxtApplication in 8.087 seconds (JVM running for 11.737)
+2021-01-07 09:45:54.628  INFO 25236 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-01-07 09:45:54.631  INFO 25236 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-01-07 09:45:54.637  INFO 25236 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2021-01-07 09:45:56.017  INFO 25236 --- [http-nio-8080-exec-2] c.e.j.c.Impl.CheckControllerImpl         : PS9H
+2021-01-07 09:45:56.579  WARN 25236 --- [http-nio-8080-exec-2] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [555] milliseconds.
+2021-01-07 09:45:57.200  INFO 25236 --- [http-nio-8080-exec-1] c.e.j.c.Impl.CheckControllerImpl         : UPSH
+2021-01-07 09:46:30.026  INFO 25236 --- [http-nio-8080-exec-4] c.e.j.c.Impl.CheckControllerImpl         : upsh
+2021-01-07 09:46:30.082  INFO 25236 --- [http-nio-8080-exec-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-01-07 09:46:31.093  INFO 25236 --- [http-nio-8080-exec-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-01-07 09:46:44.974  INFO 25236 --- [http-nio-8080-exec-6] c.e.j.c.Impl.CheckControllerImpl         : upsh
+2021-01-07 09:47:05.478  INFO 25236 --- [http-nio-8080-exec-8] c.e.j.c.Impl.CheckControllerImpl         : 3LLR
+2021-01-07 09:47:18.655  INFO 25236 --- [http-nio-8080-exec-9] c.e.j.c.Impl.CheckControllerImpl         : 3llr
+2021-01-07 09:48:50.740  INFO 25236 --- [http-nio-8080-exec-1] c.e.j.c.Impl.CheckControllerImpl         : LHYM
+2021-01-07 09:49:23.902  INFO 25236 --- [http-nio-8080-exec-3] c.e.j.c.Impl.CheckControllerImpl         : lhym
+2021-01-07 09:49:32.000  INFO 25236 --- [http-nio-8080-exec-4] c.e.j.c.Impl.CheckControllerImpl         : 6FET
+2021-01-07 09:49:45.442  INFO 25236 --- [http-nio-8080-exec-5] c.e.j.c.Impl.CheckControllerImpl         : 6fet
+2021-01-07 10:18:36.175  INFO 25236 --- [http-nio-8080-exec-7] c.e.j.c.Impl.CheckControllerImpl         : U9NE
+2021-01-07 10:18:47.233  INFO 25236 --- [http-nio-8080-exec-10] c.e.j.c.Impl.CheckControllerImpl         : u9ne
+2021-01-07 10:19:25.726  INFO 25236 --- [http-nio-8080-exec-2] c.e.j.c.Impl.CheckControllerImpl         : 3GKY
+2021-01-07 10:19:35.646  INFO 25236 --- [http-nio-8080-exec-3] c.e.j.c.Impl.CheckControllerImpl         : 3gky
+2021-01-07 10:19:39.233  INFO 25236 --- [http-nio-8080-exec-4] c.e.j.c.Impl.CheckControllerImpl         : 3gky
+2021-01-07 10:26:23.298  INFO 25236 --- [http-nio-8080-exec-6] c.e.j.c.Impl.CheckControllerImpl         : UKV8
+2021-01-07 10:26:58.555  INFO 25236 --- [http-nio-8080-exec-8] c.e.j.c.Impl.CheckControllerImpl         : 9RZV
+2021-01-07 10:27:18.299  INFO 25236 --- [http-nio-8080-exec-9] c.e.j.c.Impl.CheckControllerImpl         : 9rzv
+2021-01-07 10:53:25.636  INFO 25236 --- [http-nio-8080-exec-1] c.e.j.c.Impl.CheckControllerImpl         : B3EK
+2021-01-07 10:53:31.661  INFO 25236 --- [http-nio-8080-exec-3] c.e.j.c.Impl.CheckControllerImpl         : b3ek
+2021-01-07 11:23:06.455  INFO 25236 --- [http-nio-8080-exec-5] c.e.j.c.Impl.CheckControllerImpl         : 6EA8
+2021-01-07 11:23:19.744  INFO 25236 --- [http-nio-8080-exec-7] c.e.j.c.Impl.CheckControllerImpl         : 6ea8
+2021-01-07 11:28:31.495  INFO 25236 --- [http-nio-8080-exec-10] c.e.j.c.Impl.CheckControllerImpl         : L4SR
+2021-01-07 11:28:45.099  INFO 25236 --- [http-nio-8080-exec-9] c.e.j.c.Impl.CheckControllerImpl         : l4sr
+2021-01-07 11:28:47.687  INFO 25236 --- [http-nio-8080-exec-2] c.e.j.c.Impl.CheckControllerImpl         : l4sr
+2021-01-07 11:32:37.910  INFO 25236 --- [http-nio-8080-exec-3] c.e.j.c.Impl.CheckControllerImpl         : YGQ9
+2021-01-07 11:32:44.440  INFO 25236 --- [http-nio-8080-exec-5] c.e.j.c.Impl.CheckControllerImpl         : ygq9
+2021-01-07 11:36:40.506  INFO 25236 --- [http-nio-8080-exec-7] c.e.j.c.Impl.CheckControllerImpl         : Q2WV
+2021-01-07 11:36:55.730  INFO 25236 --- [http-nio-8080-exec-10] c.e.j.c.Impl.CheckControllerImpl         : q2wv
+2021-01-07 11:36:58.019  INFO 25236 --- [http-nio-8080-exec-9] c.e.j.c.Impl.CheckControllerImpl         : q2wv
+2021-01-07 14:07:00.300  WARN 25236 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h13m58s801ms216µs200ns).
+2021-01-07 14:10:15.203  INFO 3992 --- [restartedMain] com.example.jwxt.JwxtApplication         : Starting JwxtApplication using Java 11.0.7 on DESKTOP-DDA6OUO with PID 3992 (C:\Users\AAS\Desktop\大三上课设\教务系统后端\jwxt\target\classes started by AAS in C:\Users\AAS\Desktop\大三上课设\教务系统后端\jwxt)
+2021-01-07 14:10:15.222  INFO 3992 --- [restartedMain] com.example.jwxt.JwxtApplication         : The following profiles are active: mysql,mybatis,logging,wx
+2021-01-07 14:10:15.358  INFO 3992 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-01-07 14:10:15.359  INFO 3992 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-01-07 14:10:18.730  INFO 3992 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-01-07 14:10:18.755  INFO 3992 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-01-07 14:10:18.755  INFO 3992 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-01-07 14:10:19.020  INFO 3992 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-01-07 14:10:19.021  INFO 3992 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3660 ms
+2021-01-07 14:10:20.036  INFO 3992 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-07 14:10:20.383  WARN 3992 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2021-01-07 14:10:20.709  INFO 3992 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-01-07 14:10:20.822  INFO 3992 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-07 14:10:20.861  INFO 3992 --- [restartedMain] com.example.jwxt.JwxtApplication         : Started JwxtApplication in 7.103 seconds (JVM running for 10.519)
+2021-01-07 14:12:14.963  INFO 3992 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-01-07 14:12:14.971  INFO 3992 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-01-07 14:12:15.003  INFO 3992 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 30 ms
+2021-01-07 14:12:16.461  INFO 3992 --- [http-nio-8080-exec-2] c.e.j.c.Impl.CheckControllerImpl         : 8G8V
+2021-01-07 14:12:17.059  WARN 3992 --- [http-nio-8080-exec-2] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [586] milliseconds.
+2021-01-07 14:12:23.253  INFO 3992 --- [http-nio-8080-exec-1] c.e.j.c.Impl.CheckControllerImpl         : 8g8v
+2021-01-07 14:12:23.298  INFO 3992 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-01-07 14:12:24.107  INFO 3992 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+>>>>>>> 3536d2f7ad917a287d3fb9bead038bad658a727c

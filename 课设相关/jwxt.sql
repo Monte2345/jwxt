@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： localhost
--- 生成日期： 2021-01-07 11:41:29
+-- 生成日期： 2021-01-07 17:41:38
 -- 服务器版本： 5.7.26
 -- PHP 版本： 7.3.4
 
@@ -85,14 +85,14 @@ INSERT INTO `course_class` (`id`, `cno`, `curricula_variable`, `time_period`) VA
 -- （参见下面的实际视图）
 --
 CREATE TABLE `c_c` (
-`course_name` varchar(20)
-,`course_cno` int(11)
+`courseName` varchar(20)
+,`courseCno` int(11)
 ,`type` varchar(20)
 ,`credit` tinyint(4)
-,`curricula_variable` varchar(20)
-,`time_period` varchar(100)
-,`teacher_name` varchar(20)
-,`tno` int(11)
+,`curriculaVariable` varchar(20)
+,`timePeriod` varchar(100)
+,`teacherName` int(11)
+,`tno` varchar(20)
 );
 
 -- --------------------------------------------------------
@@ -115,7 +115,10 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`id`, `sno`, `name`, `student_class`, `gpa`, `pwd`) VALUES
-(1, 1806100118, '小周小周', '计科186', 3.5, '2090578469');
+(1, 1806100118, '小周小周', '计科186', 3.5, '2090578469'),
+(2, 1806100119, '黎小浪', '计科186', 3.5, '12345677'),
+(3, 1806100120, '王小天', '计科186', 3.5, '12345677'),
+(4, 1806100121, '陈小波', '计科186', 3.5, '12345677');
 
 -- --------------------------------------------------------
 
@@ -129,6 +132,34 @@ CREATE TABLE `student_class` (
   `grade` tinyint(5) NOT NULL COMMENT '成绩',
   `curricula_variable` varchar(20) COLLATE utf8_unicode_ci NOT NULL COMMENT '教学班号'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 转存表中的数据 `student_class`
+--
+
+INSERT INTO `student_class` (`id`, `sno`, `grade`, `curricula_variable`) VALUES
+(1, 1806100118, 0, '131800701-1'),
+(4, 1806100119, 0, '131800701-1'),
+(5, 1806100120, 0, '131800701-2'),
+(7, 1806100118, 0, '180600032-1'),
+(8, 1806100118, 0, '180600078-1');
+
+-- --------------------------------------------------------
+
+--
+-- 替换视图以便查看 `student_schedule`
+-- （参见下面的实际视图）
+--
+CREATE TABLE `student_schedule` (
+`sno` int(11)
+,`cno` int(11)
+,`courseName` varchar(20)
+,`timePeriod` varchar(100)
+,`teacherName` varchar(20)
+,`curriculaVariable` varchar(20)
+,`classHours` tinyint(5)
+,`credit` tinyint(4)
+);
 
 -- --------------------------------------------------------
 
@@ -149,13 +180,13 @@ CREATE TABLE `teacher` (
 --
 
 INSERT INTO `teacher` (`id`, `tno`, `name`, `pwd`, `identity`) VALUES
-(1, 20210102, '老古', '123456', '课程负责人'),
-(2, 20210103, '老刘', '123456', '课程负责人'),
-(3, 20210104, '老李', '123456', '系主任'),
-(4, 20210105, '老张', '123456', '任课老师'),
-(5, 20210106, '老王', '123456', '任课老师'),
-(6, 20210107, '老吴', '123456', '任课老师'),
-(7, 20210108, '老周', '123456', '任课老师');
+(1, 20210102, '老古', '123456', 'teacher'),
+(2, 20210103, '老刘', '123456', 'teacher'),
+(3, 20210104, '老李', '123456', 'director'),
+(4, 20210105, '老张', '123456', 'teacher'),
+(5, 20210106, '老王', '123456', 'teacher'),
+(6, 20210107, '老吴', '123456', 'teacher'),
+(7, 20210108, '老周', '123456', 'teacher');
 
 -- --------------------------------------------------------
 
@@ -216,7 +247,16 @@ INSERT INTO `teaching_class` (`id`, `curricula_variable`) VALUES
 --
 DROP TABLE IF EXISTS `c_c`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `c_c`  AS  select `course`.`name` AS `course_name`,`course`.`cno` AS `course_cno`,`course`.`type` AS `type`,`course`.`credit` AS `credit`,`course_class`.`curricula_variable` AS `curricula_variable`,`course_class`.`time_period` AS `time_period`,`teacher`.`name` AS `teacher_name`,`teacher_class`.`tno` AS `tno` from (((`course` join `course_class`) join `teacher_class`) join `teacher`) where ((`course`.`cno` = `course_class`.`cno`) and (`course_class`.`curricula_variable` = `teacher_class`.`curricula_variable`) and (`teacher_class`.`tno` = `teacher`.`tno`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `c_c`  AS  select `course`.`name` AS `courseName`,`course`.`cno` AS `courseCno`,`course`.`type` AS `type`,`course`.`credit` AS `credit`,`course_class`.`curricula_variable` AS `curriculaVariable`,`course_class`.`time_period` AS `timePeriod`,`teacher_class`.`tno` AS `teacherName`,`teacher`.`name` AS `tno` from (((`course` join `course_class`) join `teacher_class`) join `teacher`) where ((`course`.`cno` = `course_class`.`cno`) and (`course_class`.`curricula_variable` = `teacher_class`.`curricula_variable`) and (`teacher_class`.`tno` = `teacher`.`tno`) and (`course`.`type` = '专业选修')) ;
+
+-- --------------------------------------------------------
+
+--
+-- 视图结构 `student_schedule`
+--
+DROP TABLE IF EXISTS `student_schedule`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `student_schedule`  AS  select `student`.`sno` AS `sno`,`course`.`cno` AS `cno`,`course`.`name` AS `courseName`,`course_class`.`time_period` AS `timePeriod`,`teacher`.`name` AS `teacherName`,`course_class`.`curricula_variable` AS `curriculaVariable`,`course`.`class_hours` AS `classHours`,`course`.`credit` AS `credit` from (((((`student_class` join `course_class`) join `student`) join `teacher_class`) join `teacher`) join `course`) where ((`course`.`cno` = `course_class`.`cno`) and (`course_class`.`curricula_variable` = `teacher_class`.`curricula_variable`) and (`teacher_class`.`tno` = `teacher`.`tno`) and (`student_class`.`sno` = `student`.`sno`) and (`student_class`.`curricula_variable` = `course_class`.`curricula_variable`)) ;
 
 --
 -- 转储表的索引
@@ -284,13 +324,13 @@ ALTER TABLE `course_class`
 -- 使用表AUTO_INCREMENT `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '学生id', AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '学生id', AUTO_INCREMENT=5;
 
 --
 -- 使用表AUTO_INCREMENT `student_class`
 --
 ALTER TABLE `student_class`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '选课id';
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '选课id', AUTO_INCREMENT=12;
 
 --
 -- 使用表AUTO_INCREMENT `teacher`

@@ -57,4 +57,11 @@ public interface CourseClassMapper {
             "from c_c"
     })
     List<Map<String, Object>> courseClassView();
+
+    @Select({
+            "select cno",
+            "from course_class " +
+                    "where curricula_variable = #{curriculaVariable,jdbcType=VARCHAR}"
+    })
+    Integer findCnoByCurricula(String curriculaVariable);
 }

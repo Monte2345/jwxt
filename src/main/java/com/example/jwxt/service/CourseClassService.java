@@ -4,4 +4,6 @@ import com.example.jwxt.support.returnEntity.ServerReturnObject;
 
 public interface CourseClassService {
     ServerReturnObject courseClassView();
+
+    Integer findCno(String curriculaVariable);
 }

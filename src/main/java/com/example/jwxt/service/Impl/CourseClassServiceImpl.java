@@ -17,4 +17,9 @@ public class CourseClassServiceImpl implements CourseClassService {
 
         return ServerReturnObject.createSuccessByMessageAndData("自主选课",courseClassMapper.courseClassView());
     }
+
+    @Override
+    public Integer findCno(String curriculaVariable) {
+        return courseClassMapper.findCnoByCurricula(curriculaVariable);
+    }
 }

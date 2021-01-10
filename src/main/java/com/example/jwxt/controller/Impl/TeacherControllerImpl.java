@@ -36,4 +36,9 @@ public class TeacherControllerImpl implements TeacherController {
             return ServerReturnObject.createErrorByMessage("验证码错误！");
         }
     }
+
+    @RequestMapping("/arrangingClass")
+    public ServerReturnObject arrangingClass() {
+        return teacherService.arrangingClass();
+    }
 }

@@ -7,6 +7,9 @@ import com.example.jwxt.support.returnEntity.ServerReturnObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
+
 @Service
 public class StudentServiceImpl implements StudentService {
 
@@ -38,5 +41,21 @@ public class StudentServiceImpl implements StudentService {
             return ServerReturnObject.createSuccessByMessageAndData("登录成功！",rstudent);
         }
 
+    }
+
+    @Override
+    public ServerReturnObject getGrade(Integer sno) {
+        return ServerReturnObject.createSuccessByMessageAndData("课程成绩",studentMapper.getGrade(sno));
+    }
+
+    @Override
+    public ServerReturnObject getGPA(Integer sno) {
+
+        return ServerReturnObject.createSuccessByMessageAndData("gpa",studentMapper.getGPA(sno));
+    }
+
+    @Override
+    public ServerReturnObject getRank(Integer sno) {
+        return ServerReturnObject.createSuccessByMessageAndData("绩点排名",studentMapper.getRank(sno));
     }
 }

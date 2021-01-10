@@ -32,20 +32,20 @@ public class StudentClassControllerImpl implements StudentClassController {
         }
     }
 
-    @Override
-    public boolean judgeCurricula(Integer sno,String curriculaVariable){
-        if(studentClassService.judgeCurricula(sno,curriculaVariable))
-        {
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
+
 
     @RequestMapping("/judgeCno")
     public ServerReturnObject judgeCno(Integer sno, Integer cno) {
         if(!studentClassService.judgeCno(sno,cno))
+        {
+            return ServerReturnObject.createErrorByMessage("已选课");
+        }
+        return ServerReturnObject.createSuccessByMessage("未选课");
+    }
+
+    @RequestMapping("/judgeCurricula")
+    public ServerReturnObject judgeCurricula(Integer sno, String curriculaVariable) {
+        if(!studentClassService.judgeCurricula(sno,curriculaVariable))
         {
             return ServerReturnObject.createErrorByMessage("已选课");
         }

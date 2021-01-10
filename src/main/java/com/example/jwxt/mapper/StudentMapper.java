@@ -3,6 +3,10 @@ package com.example.jwxt.mapper;
 import com.example.jwxt.entity.Student;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
+
+import java.util.List;
+import java.util.Map;
+
 @Mapper
 public interface StudentMapper {
     @Delete({
@@ -75,4 +79,38 @@ public interface StudentMapper {
             @Result(column="id", property="id", jdbcType=JdbcType.INTEGER)
     })
     Integer selectPrimaryKeyBySno(Integer sno);
+
+    @Select({
+            "select *",
+            "from grade",
+            "where sno = #{sno,jdbcType=INTEGER}"
+    })
+    List<Map<String, Object>> getGrade(Integer sno);
+
+    @Select({
+            "select avg_gpa",
+            "from gpa",
+            "where sno = #{sno,jdbcType=INTEGER}"
+    })
+    Float getGPA(Integer sno);
+
+    @Select({
+            "select pm from \n" +
+                    "(SELECT\n" +
+                    "\t\t\tt1.*,@rank :=@rank + 1 AS pm\n" +
+                    "\t\tFROM\n" +
+                    "\t\t\t(\n" +
+                    "\t\t\t\tSELECT\n" +
+                    "\t\t\t\t\t*\n" +
+                    "\t\t\t\tFROM\n" +
+                    "\t\t\t\t\tgpa\n" +
+                    "\t\t\t\tORDER BY\n" +
+                    "\t\t\t\t\tgpa.avg_gpa DESC\n" +
+                    "\t\t\t) AS t1,\n" +
+                    "\t\t\t(SELECT @rank := 0) AS t2\n" +
+                    " \n" +
+                    ") as m\n" +
+                    "WHERE sno=#{sno,jdbcType=INTEGER}"
+    })
+    Integer getRank(Integer sno);
 }

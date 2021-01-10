@@ -41,4 +41,19 @@ public class StudentControllerImpl implements StudentController {
 
 
     }
+
+    @RequestMapping("/getGrade")
+    public ServerReturnObject getGrade(Integer sno) {
+        return studentService.getGrade(sno);
+    }
+
+    @RequestMapping("/getGPA")
+    public ServerReturnObject getGPA(Integer sno) {
+        return studentService.getGPA(sno);
+    }
+
+    @RequestMapping("/getRank")
+    public ServerReturnObject getRank(Integer sno) {
+        return studentService.getRank(sno);
+    }
 }

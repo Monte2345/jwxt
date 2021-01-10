@@ -58,7 +58,11 @@ type：选择怎么生成mapper接口（在MyBatis3/MyBatis3Simple下）：
 
 
         <!--设置要将数据库中的那张表逆向生成哪一个Javabean，tableName为数据库表名，domainObjectName为实体类-->
-        <table tableName="course_class" domainObjectName="CourseClass" enableDeleteByExample="false" enableCountByExample="false"
+        <table tableName="c_n" domainObjectName="CN" enableDeleteByExample="false" enableCountByExample="false"
+               enableSelectByExample="false" enableUpdateByExample="false"/>
+
+        <!--设置要将数据库中的那张表逆向生成哪一个Javabean，tableName为数据库表名，domainObjectName为实体类-->
+        <table tableName="class_schedule" domainObjectName="ClassSchedule" enableDeleteByExample="false" enableCountByExample="false"
                enableSelectByExample="false" enableUpdateByExample="false"/>
     </context>
 </generatorConfiguration>

@@ -76,4 +76,10 @@ public interface CourseClassMapper {
                     "where curricula_variable = #{curriculaVariable,jdbcType=VARCHAR}"
     })
     Integer findIdByCurricula(String curriculaVariable);
+
+    @Delete({
+            "delete from course_class",
+            "where 1=1"
+    })
+    int deleteAll();
 }

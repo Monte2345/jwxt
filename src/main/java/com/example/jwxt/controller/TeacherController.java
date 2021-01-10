@@ -8,4 +8,5 @@ import javax.servlet.http.HttpServletRequest;
 public interface TeacherController {
     ServerReturnObject login(HttpServletRequest request, Teacher teacher, String check) throws Exception;
 
+    ServerReturnObject arrangingClass();
 }

@@ -1,16 +1,9 @@
 package com.example.jwxt.mapper;
 
 import com.example.jwxt.entity.TeacherClass;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.InsertProvider;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
-import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
-
+@Mapper
 public interface TeacherClassMapper {
     @Delete({
         "delete from teacher_class",
@@ -54,4 +47,10 @@ public interface TeacherClassMapper {
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(TeacherClass record);
+
+    @Delete({
+            "delete from teacher_class",
+            "where 1=1"
+    })
+    int deleteAll();
 }

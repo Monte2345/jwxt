@@ -3,11 +3,11 @@ package com.example.jwxt.entity;
 public class StudentClass {
     private Integer id;
 
-    private Integer sno;
+    public Integer sno;
 
-    private Byte grade;
+    public Byte grade;
 
-    private String curriculaVariable;
+    public String curriculaVariable;
 
     public Integer getId() {
         return id;

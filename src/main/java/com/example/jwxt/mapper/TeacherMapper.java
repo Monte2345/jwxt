@@ -2,7 +2,9 @@ package com.example.jwxt.mapper;
 
 import com.example.jwxt.entity.CN;
 import com.example.jwxt.entity.ClassSchedule;
+import com.example.jwxt.entity.StudentClass;
 import com.example.jwxt.entity.Teacher;
+import com.example.jwxt.support.returnEntity.ServerReturnObject;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 
@@ -78,4 +80,27 @@ public interface TeacherMapper {
             "from class_schedule",
     })
     List<ClassSchedule> getClassSchedule();
+
+    @Select({
+            "select *",
+            "from teacher_schedule",
+            "where tno = #{tno,jdbcType=INTEGER}  "
+    })
+    List<Map<String, Object>> getSchedule(Integer tno);
+
+    @Select({
+            "select student.sno,student.name,student.student_class,grade",
+            "from student_class,student",
+            "where curricula_variable = #{curriculaVariable,jdbcType=VARCHAR}  and",
+            "student_class.sno=student.sno"
+    })
+    List<Map<String, Object>> getStudentsByClass(String curriculaVariable);
+
+    @Update({"<script>"  +
+            "<foreach collection='list' item='item' index='index'  separator=',' > " +
+            "update student_class set grade= #{item.grade} " +
+            "where sno = #{item.sno} and curricula_variable = #{item.curriculaVariable} " +
+            "</foreach>" +
+            "</script>"})
+    void batchGradeUpdate(@Param("list")List<StudentClass> list);
 }

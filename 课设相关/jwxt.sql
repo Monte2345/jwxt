@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： localhost
--- 生成日期： 2021-01-10 10:09:13
+-- 生成日期： 2021-01-10 18:32:33
 -- 服务器版本： 5.7.26
 -- PHP 版本： 7.3.4
 
@@ -85,20 +85,20 @@ CREATE TABLE `course_class` (
 --
 
 INSERT INTO `course_class` (`id`, `cno`, `curricula_variable`, `time_period`, `capacity`, `enrollment`) VALUES
-(35, 180600037, '180600037-2', 'Fri|5-6', 100, 0),
-(36, 180600037, '180600037-1', 'Fri|9-11', 100, 0),
-(34, 180600032, '180600032-2', 'Fri|1-2', 100, 0),
-(33, 180600068, '180600068-2', 'Thu|9-11', 100, 0),
-(32, 180600075, '180600075-1', 'Thu|7-8', 100, 0),
-(31, 131800701, '131800701-2', 'Thu|5-6', 100, 0),
-(30, 131800701, '131800701-1', 'Thu|3-4', 100, 0),
-(29, 180600078, '180600078-1', 'Thu.Wed|3-4.1-2', 100, 0),
-(28, 180600068, '180600068-1', 'Wed|1-2', 100, 0),
-(27, 180600075, '180600075-2', 'Tue|7-8', 100, 0),
-(26, 180600032, '180600032-1', 'Tue|5-6', 100, 0),
-(25, 180600065, '180600065-2', 'Mon|7-8', 100, 0),
-(24, 180600065, '180600065-1', 'Mon|5-6', 100, 0),
-(23, 180600078, '180600078-2', 'Tue.Mon|1-2.3-4', 100, 0);
+(79, 180600078, '180600078-2', 'Wed.Mon|1-2.3-4', 100, 0),
+(80, 180600037, '180600037-2', 'Mon|9-11', 100, 0),
+(81, 180600032, '180600032-1', 'Tue|1-2', 100, 0),
+(82, 180600078, '180600078-1', 'Thu.Tue|5-6.5-6', 100, 0),
+(83, 131800701, '131800701-2', 'Tue|7-8', 100, 0),
+(84, 180600037, '180600037-1', 'Tue|9-11', 100, 0),
+(85, 131800701, '131800701-1', 'Wed|5-6', 100, 0),
+(86, 180600075, '180600075-1', 'Wed|9-11', 100, 0),
+(87, 180600065, '180600065-1', 'Thu|1-2', 100, 0),
+(88, 180600075, '180600075-2', 'Thu|9-11', 100, 0),
+(89, 180600032, '180600032-2', 'Fri|5-6', 100, 0),
+(90, 180600065, '180600065-2', 'Fri|7-8', 100, 0),
+(91, 180600068, '180600068-1', 'Fri|9-11', 100, 0),
+(92, 180600068, '180600068-2', 'Fri|9-11', 100, 0);
 
 -- --------------------------------------------------------
 
@@ -205,7 +205,7 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`id`, `sno`, `name`, `student_class`, `gpa`, `pwd`) VALUES
-(1, 1806100118, '小周小周', '计科186', 3.5, '2090578469'),
+(1, 1806100118, '小周小周', '计科186', 3.7, '2090578469'),
 (2, 1806100119, '黎小浪', '计科186', 3.5, '12345677'),
 (3, 1806100120, '王小天', '计科186', 2.5, '12345677'),
 (4, 1806100121, '陈小波', '计科186', 3.5, '12345677');
@@ -228,7 +228,7 @@ CREATE TABLE `student_class` (
 --
 
 INSERT INTO `student_class` (`id`, `sno`, `grade`, `curricula_variable`) VALUES
-(1, 1806100118, 0, '131800701-1'),
+(1, 1806100118, 95, '131800701-1'),
 (4, 1806100119, 87, '131800701-1'),
 (5, 1806100120, 75, '131800701-2'),
 (7, 1806100118, 78, '180600032-1'),
@@ -311,20 +311,20 @@ CREATE TABLE `teacher_class` (
 --
 
 INSERT INTO `teacher_class` (`id`, `tno`, `time_period`, `curricula_variable`) VALUES
-(38, 20210104, 'Fri|9-11', '180600037-1'),
-(37, 20210105, 'Fri|5-6', '180600037-2'),
-(36, 20210104, 'Fri|1-2', '180600032-2'),
-(35, 20210102, 'Thu|9-11', '180600068-2'),
-(34, 20210106, 'Thu|7-8', '180600075-1'),
-(33, 20210103, 'Thu|5-6', '131800701-2'),
-(32, 20210102, 'Thu|3-4', '131800701-1'),
-(31, 20210107, 'Thu.Wed|3-4.1-2', '180600078-1'),
-(30, 20210108, 'Wed|1-2', '180600068-1'),
-(29, 20210107, 'Tue|7-8', '180600075-2'),
-(28, 20210103, 'Tue|5-6', '180600032-1'),
-(27, 20210106, 'Mon|7-8', '180600065-2'),
-(26, 20210105, 'Mon|5-6', '180600065-1'),
-(25, 20210108, 'Tue.Mon|1-2.3-4', '180600078-2');
+(81, 20210108, 'Wed.Mon|1-2.3-4', '180600078-2'),
+(82, 20210105, 'Mon|9-11', '180600037-2'),
+(83, 20210103, 'Tue|1-2', '180600032-1'),
+(84, 20210107, 'Thu.Tue|5-6.5-6', '180600078-1'),
+(85, 20210103, 'Tue|7-8', '131800701-2'),
+(86, 20210104, 'Tue|9-11', '180600037-1'),
+(87, 20210102, 'Wed|5-6', '131800701-1'),
+(88, 20210106, 'Wed|9-11', '180600075-1'),
+(89, 20210105, 'Thu|1-2', '180600065-1'),
+(90, 20210107, 'Thu|9-11', '180600075-2'),
+(91, 20210104, 'Fri|5-6', '180600032-2'),
+(92, 20210106, 'Fri|7-8', '180600065-2'),
+(93, 20210108, 'Fri|9-11', '180600068-1'),
+(94, 20210102, 'Fri|9-11', '180600068-2');
 
 -- --------------------------------------------------------
 
@@ -357,6 +357,23 @@ INSERT INTO `teacher_group` (`id`, `gno`, `tno`) VALUES
 (12, 1811, 20210108),
 (13, 1812, 20210108),
 (14, 1812, 20210102);
+
+-- --------------------------------------------------------
+
+--
+-- 替换视图以便查看 `teacher_schedule`
+-- （参见下面的实际视图）
+--
+CREATE TABLE `teacher_schedule` (
+`tno` int(11)
+,`cno` int(11)
+,`courseName` varchar(20)
+,`timePeriod` varchar(100)
+,`curriculaVariable` varchar(20)
+,`classHours` tinyint(5)
+,`credit` tinyint(4)
+,`type` varchar(20)
+);
 
 -- --------------------------------------------------------
 
@@ -437,6 +454,15 @@ DROP TABLE IF EXISTS `student_schedule`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `student_schedule`  AS  select `student_class`.`sno` AS `sno`,`course_class`.`cno` AS `cno`,`course`.`name` AS `courseName`,`course_class`.`time_period` AS `timePeriod`,`teacher`.`name` AS `teacherName`,`course_class`.`curricula_variable` AS `curriculaVariable`,`course`.`class_hours` AS `classHours`,`course`.`credit` AS `credit`,`course`.`type` AS `type` from ((((`student_class` join `course_class`) join `course`) join `teacher_class`) join `teacher`) where ((`student_class`.`curricula_variable` = `teacher_class`.`curricula_variable`) and (`student_class`.`curricula_variable` = `course_class`.`curricula_variable`) and (`course`.`cno` = `course_class`.`cno`) and (`teacher`.`tno` = `teacher_class`.`tno`)) ;
 
+-- --------------------------------------------------------
+
+--
+-- 视图结构 `teacher_schedule`
+--
+DROP TABLE IF EXISTS `teacher_schedule`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `teacher_schedule`  AS  select `teacher_class`.`tno` AS `tno`,`course_class`.`cno` AS `cno`,`course`.`name` AS `courseName`,`course_class`.`time_period` AS `timePeriod`,`course_class`.`curricula_variable` AS `curriculaVariable`,`course`.`class_hours` AS `classHours`,`course`.`credit` AS `credit`,`course`.`type` AS `type` from ((`teacher_class` join `course_class`) join `course`) where ((`teacher_class`.`curricula_variable` = `course_class`.`curricula_variable`) and (`course`.`cno` = `course_class`.`cno`)) ;
+
 --
 -- 转储表的索引
 --
@@ -509,7 +535,7 @@ ALTER TABLE `course`
 -- 使用表AUTO_INCREMENT `course_class`
 --
 ALTER TABLE `course_class`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '课程安排id', AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '课程安排id', AUTO_INCREMENT=93;
 
 --
 -- 使用表AUTO_INCREMENT `course_group`
@@ -539,7 +565,7 @@ ALTER TABLE `teacher`
 -- 使用表AUTO_INCREMENT `teacher_class`
 --
 ALTER TABLE `teacher_class`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '任课id', AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '任课id', AUTO_INCREMENT=95;
 
 --
 -- 使用表AUTO_INCREMENT `teacher_group`

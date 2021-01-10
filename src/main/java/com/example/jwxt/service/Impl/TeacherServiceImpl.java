@@ -96,6 +96,7 @@ public class TeacherServiceImpl implements TeacherService {
 
         Random r = new Random();
         int rand1 = 0;
+        int rand2 = 0;
         List<String> curriculaVariables;
         List<Integer>tnoList;
         List<Integer>cnoList;
@@ -106,7 +107,14 @@ public class TeacherServiceImpl implements TeacherService {
             boolean hasInserted = false;//判断是否已经插入
             while(!hasInserted){
                 boolean flag = true;//判断位置能不能插入
-                rand1 = r.nextInt(25);
+                if(individual.getCredit()==3)
+                {
+                    rand2 = r.nextInt(5);
+                    rand1 = (rand2+1)*5-1;
+                }
+                else {
+                    rand1 = r.nextInt(25);
+                }
                 if (map.get(rand1) == null) {//避免重复判断同一个位置
                     map.put(rand1, 0);
                     tnoList = schedules.get(rand1).getTnoList();
@@ -114,14 +122,16 @@ public class TeacherServiceImpl implements TeacherService {
                     curriculaVariables = schedules.get(rand1).getCurriculaVariables();
 
                     for (int t = 0; t < tnoList.size(); t++) {
-                        if (tnoList.get(t) == individual.getTno()) {
+                        if (tnoList.get(t).intValue() == individual.getTno().intValue()) {
                             flag = false;
                             break;
                         }
                     }
                     if (flag)
                         for (int c = 0; c < cnoList.size(); c++) {
-                            if (cnoList.get(c) != individual.getCno()) {
+                            Integer cno1 = cnoList.get(c);
+                            Integer cno2 = individual.getCno();
+                            if (cno1.intValue() != cno2.intValue()) {
                                 flag = false;
                                 break;
                             }
@@ -140,15 +150,16 @@ public class TeacherServiceImpl implements TeacherService {
                                 hasInserted = true;
                             }
                         } else {
-                            tnoList.add(individual.getTno());
-                            cnoList.add(individual.getCno());
-                            curriculaVariables.add(individual.getCurriculaVariable());
-                            schedules.get(rand1).setCnoList(cnoList);
-                            schedules.get(rand1).setCurriculaVariables(curriculaVariables);
-                            schedules.get(rand1).setTnoList(tnoList);
-                            num--;
-                            hasInserted = true;
-
+                            if(individual.getCredit()!=3) {
+                                tnoList.add(individual.getTno());
+                                cnoList.add(individual.getCno());
+                                curriculaVariables.add(individual.getCurriculaVariable());
+                                schedules.get(rand1).setCnoList(cnoList);
+                                schedules.get(rand1).setCurriculaVariables(curriculaVariables);
+                                schedules.get(rand1).setTnoList(tnoList);
+                                num--;
+                                hasInserted = true;
+                            }
                         }
                     }
                 }
@@ -220,5 +231,22 @@ public class TeacherServiceImpl implements TeacherService {
         }
         index = 0;
         return null;
+    }
+
+    @Override
+    public ServerReturnObject getSchedule(Integer tno) {
+        return ServerReturnObject.createSuccessByMessageAndData("任课安排",teacherMapper.getSchedule(tno));
+    }
+
+    @Override
+    public ServerReturnObject getStudentsByClass(String curriculaVariable) {
+        return ServerReturnObject.createSuccessByMessageAndData("学生名单",teacherMapper.getStudentsByClass(curriculaVariable));
+    }
+
+    @Override
+    public ServerReturnObject batchGradeUpdate(List<StudentClass> students) {
+        teacherMapper.batchGradeUpdate(students);
+        //students.get(0).grade;
+        return ServerReturnObject.createSuccessByMessage("学生成绩修改");
     }
 }

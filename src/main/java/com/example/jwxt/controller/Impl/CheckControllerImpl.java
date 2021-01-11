@@ -20,8 +20,6 @@ import java.io.IOException;
 public class CheckControllerImpl implements CheckController {
     private static final Logger LOGGER = LoggerFactory.getLogger(CheckControllerImpl.class);
 
-
-
     @RequestMapping("/verifyCode")
     public void verifyCode(HttpServletRequest request, HttpServletResponse response) {
         IVerifyCodeGen iVerifyCodeGen = new SimpleCharVerifyCodeGenImpl();

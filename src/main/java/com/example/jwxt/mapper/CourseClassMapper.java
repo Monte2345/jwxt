@@ -59,9 +59,16 @@ public interface CourseClassMapper {
 
     @Select({
             "select *",
-            "from c_c"
+            "from c_c",
+            "where type <> '专业必修'"
     })
     List<Map<String, Object>> courseClassView();
+
+    @Select({
+            "select *",
+            "from c_c"
+    })
+    List<Map<String, Object>> AllcourseClassView();
 
     @Select({
             "select cno",

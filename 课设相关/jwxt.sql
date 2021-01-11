@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： localhost
--- 生成日期： 2021-01-11 08:55:31
+-- 生成日期： 2021-01-11 19:06:30
 -- 服务器版本： 5.7.26
 -- PHP 版本： 7.3.4
 
@@ -416,7 +416,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `c_c`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `c_c`  AS  select `course`.`name` AS `courseName`,`course`.`cno` AS `courseCno`,`course`.`type` AS `type`,`course`.`credit` AS `credit`,`course_class`.`curricula_variable` AS `curriculaVariable`,`course_class`.`time_period` AS `timePeriod`,`teacher_class`.`tno` AS `teacherName`,`teacher`.`name` AS `tno`,`course_class`.`capacity` AS `capacity`,`course_class`.`enrollment` AS `enrollment` from (((`course` join `course_class`) join `teacher_class`) join `teacher`) where ((`course`.`cno` = `course_class`.`cno`) and (`course_class`.`curricula_variable` = `teacher_class`.`curricula_variable`) and (`teacher_class`.`tno` = `teacher`.`tno`) and (`course`.`type` = '专业选修')) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `c_c`  AS  select `course`.`name` AS `courseName`,`course`.`cno` AS `courseCno`,`course`.`type` AS `type`,`course`.`credit` AS `credit`,`course_class`.`curricula_variable` AS `curriculaVariable`,`course_class`.`time_period` AS `timePeriod`,`teacher_class`.`tno` AS `teacherName`,`teacher`.`name` AS `tno`,`course_class`.`capacity` AS `capacity`,`course_class`.`enrollment` AS `enrollment` from (((`course` join `course_class`) join `teacher_class`) join `teacher`) where ((`course`.`cno` = `course_class`.`cno`) and (`course_class`.`curricula_variable` = `teacher_class`.`curricula_variable`) and (`teacher_class`.`tno` = `teacher`.`tno`)) ;
 
 -- --------------------------------------------------------
 

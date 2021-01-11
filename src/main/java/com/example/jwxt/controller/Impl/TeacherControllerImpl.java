@@ -1,10 +1,13 @@
 package com.example.jwxt.controller.Impl;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.example.jwxt.controller.TeacherController;
 import com.example.jwxt.entity.StudentClass;
 import com.example.jwxt.entity.StudentClasses;
 import com.example.jwxt.entity.Teacher;
 
+import com.example.jwxt.service.CourseClassService;
 import com.example.jwxt.service.TeacherService;
 import com.example.jwxt.support.returnEntity.ServerReturnObject;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -35,6 +38,9 @@ public class TeacherControllerImpl implements TeacherController {
 
     @Autowired
     private TeacherService teacherService;
+
+    @Autowired
+    private CourseClassService courseClassService;
 
     @RequestMapping("/teacherLogin")
     public ServerReturnObject login(HttpServletRequest request, Teacher teacher, String check) throws Exception {
@@ -68,12 +74,13 @@ public class TeacherControllerImpl implements TeacherController {
     }
 
     @RequestMapping("batchGradeUpdate")
-    public ServerReturnObject batchGradeUpdate(List<StudentClass> studentClasses)  {
+    public ServerReturnObject batchGradeUpdate(@RequestBody String str)  {
 
 //        for(int i = 0;i<studentClasses.length;i++)
 //        {
 //            list.add(studentClasses[i]);
 //        }
+        List<StudentClass> studentClasses = JSON.parseArray(str,StudentClass.class);
         return teacherService.batchGradeUpdate(studentClasses);
     }
 
@@ -102,6 +109,11 @@ public class TeacherControllerImpl implements TeacherController {
     @RequestMapping("singleTimeUpdate")
     public ServerReturnObject singleTimeUpdate(String curriculaVariable, String timePeriod) {
         return teacherService.singleTimeUpdate(curriculaVariable,timePeriod);
+    }
+
+    @RequestMapping("AllCourseClassView")
+    public ServerReturnObject AllCourseClassView() {
+        return courseClassService.AllcourseClassView();
     }
 
     @RequestMapping("saveUsers")

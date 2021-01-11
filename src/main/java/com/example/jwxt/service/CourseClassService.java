@@ -6,4 +6,6 @@ public interface CourseClassService {
     ServerReturnObject courseClassView();
 
     Integer findCno(String curriculaVariable);
+
+    ServerReturnObject AllcourseClassView();
 }

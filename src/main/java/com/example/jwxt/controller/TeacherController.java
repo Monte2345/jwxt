@@ -18,7 +18,7 @@ public interface TeacherController {
 
     ServerReturnObject getStudentsByClass(String curriculaVariable);
 
-    ServerReturnObject batchGradeUpdate(List<StudentClass> studentClasses) ;
+//    ServerReturnObject batchGradeUpdate(List<StudentClass> studentClasses) ;
 
     ServerReturnObject singleGradeUpdate(StudentClass studentClass);
 
@@ -29,4 +29,7 @@ public interface TeacherController {
     ServerReturnObject getAllCourses();
 
     ServerReturnObject singleTimeUpdate(String curriculaVariable,String timePeriod);
+
+    ServerReturnObject AllCourseClassView();
+
 }

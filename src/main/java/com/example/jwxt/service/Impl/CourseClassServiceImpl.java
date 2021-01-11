@@ -22,4 +22,9 @@ public class CourseClassServiceImpl implements CourseClassService {
     public Integer findCno(String curriculaVariable) {
         return courseClassMapper.findCnoByCurricula(curriculaVariable);
     }
+
+    @Override
+    public ServerReturnObject AllcourseClassView() {
+        return ServerReturnObject.createSuccessByMessageAndData("所有课程",courseClassMapper.AllcourseClassView());
+    }
 }

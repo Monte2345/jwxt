@@ -21,4 +21,12 @@ public interface TeacherController {
     ServerReturnObject batchGradeUpdate(List<StudentClass> studentClasses) ;
 
     ServerReturnObject singleGradeUpdate(StudentClass studentClass);
+
+    ServerReturnObject getAllStudents();
+
+    ServerReturnObject getAllTeachers();
+
+    ServerReturnObject getAllCourses();
+
+    ServerReturnObject singleTimeUpdate(String curriculaVariable,String timePeriod);
 }

@@ -249,4 +249,26 @@ public class TeacherServiceImpl implements TeacherService {
         //students.get(0).grade;
         return ServerReturnObject.createSuccessByMessage("学生成绩修改");
     }
+
+    @Override
+    public ServerReturnObject getAllStudents() {
+        return ServerReturnObject.createSuccessByMessageAndData("学生名单",teacherMapper.getAllStudents());
+    }
+
+    @Override
+    public ServerReturnObject getAllTeachers() {
+        return ServerReturnObject.createSuccessByMessageAndData("教师名单",teacherMapper.getAllTeachers());
+    }
+
+    @Override
+    public ServerReturnObject getAllCourses() {
+        return ServerReturnObject.createSuccessByMessageAndData("课程名单",teacherMapper.getAllCourses());
+    }
+
+    @Override
+    public ServerReturnObject singleTimeUpdate(String curriculaVariable, String timePeriod) {
+        teacherMapper.courseTimeUpdate(curriculaVariable,timePeriod);
+        teacherMapper.teacherTimeUpdate(curriculaVariable,timePeriod);
+        return ServerReturnObject.createSuccessByMessage("排课成功！");
+    }
 }

@@ -16,4 +16,12 @@ public interface TeacherService {
     ServerReturnObject getStudentsByClass(String curriculaVariable);
 
     ServerReturnObject batchGradeUpdate(List<StudentClass> students);
+
+    ServerReturnObject getAllStudents();
+
+    ServerReturnObject getAllTeachers();
+
+    ServerReturnObject getAllCourses();
+
+    ServerReturnObject singleTimeUpdate(String curriculaVariable, String timePeriod);
 }

@@ -84,8 +84,30 @@ public class TeacherControllerImpl implements TeacherController {
         return teacherService.batchGradeUpdate(studentClasses);
     }
 
+    @RequestMapping("/getAllStudents")
+    public ServerReturnObject getAllStudents() {
+        return teacherService.getAllStudents();
+    }
+
+    @RequestMapping("/getAllTeachers")
+    public ServerReturnObject getAllTeachers() {
+        return teacherService.getAllTeachers();
+    }
+
+    @RequestMapping("/getAllCourses")
+    public ServerReturnObject getAllCourses() {
+        return teacherService.getAllCourses();
+    }
+
+    @RequestMapping("singleTimeUpdate")
+    public ServerReturnObject singleTimeUpdate(String curriculaVariable, String timePeriod) {
+        return teacherService.singleTimeUpdate(curriculaVariable,timePeriod);
+    }
+
     @RequestMapping("saveUsers")
     public void saveUsers(@RequestBody List<User> userList) {
 
     }
+
+
 }

@@ -1,9 +1,6 @@
 package com.example.jwxt.mapper;
 
-import com.example.jwxt.entity.CN;
-import com.example.jwxt.entity.ClassSchedule;
-import com.example.jwxt.entity.StudentClass;
-import com.example.jwxt.entity.Teacher;
+import com.example.jwxt.entity.*;
 import com.example.jwxt.support.returnEntity.ServerReturnObject;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
@@ -103,4 +100,39 @@ public interface TeacherMapper {
             "</foreach>" +
             "</script>"})
     void batchGradeUpdate(@Param("list")List<StudentClass> list);
+
+    @Select({
+            "select *",
+            "from student",
+            "order by student_class"
+    })
+    List<Student> getAllStudents();
+
+    @Select({
+            "select *",
+            "from teacher",
+            "order by identity"
+    })
+    List<Teacher> getAllTeachers();
+
+    @Select({
+            "select *",
+            "from course",
+            "order by credit"
+    })
+    List<Course> getAllCourses();
+
+    @Update({
+            "update course_class",
+            "set time_period = #{timePeriod,jdbcType=VARCHAR}",
+            "where curricula_variable = #{curriculaVariable,jdbcType=VARCHAR}"
+    })
+    void courseTimeUpdate(String curriculaVariable, String timePeriod);
+
+    @Update({
+            "update teacher_class",
+            "set time_period = #{timePeriod,jdbcType=VARCHAR}",
+            "where curricula_variable = #{curriculaVariable,jdbcType=VARCHAR}"
+    })
+    void teacherTimeUpdate(String curriculaVariable, String timePeriod);
 }

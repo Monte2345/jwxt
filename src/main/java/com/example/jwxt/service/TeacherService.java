@@ -1,5 +1,6 @@
 package com.example.jwxt.service;
 
+import com.example.jwxt.entity.CourseClass;
 import com.example.jwxt.entity.StudentClass;
 import com.example.jwxt.entity.Teacher;
 import com.example.jwxt.support.returnEntity.ServerReturnObject;
@@ -24,4 +25,6 @@ public interface TeacherService {
     ServerReturnObject getAllCourses();
 
     ServerReturnObject singleTimeUpdate(String curriculaVariable, String timePeriod);
+
+    ServerReturnObject batchTimeUpdate(List<CourseClass> courseClasses);
 }

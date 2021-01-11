@@ -94,9 +94,9 @@ public interface TeacherMapper {
     List<Map<String, Object>> getStudentsByClass(String curriculaVariable);
 
     @Update({"<script>"  +
-            "<foreach collection='list' item='item' index='index'  separator=',' > " +
-            "update student_class set grade= #{item.grade} " +
-            "where sno = #{item.sno} and curricula_variable = #{item.curriculaVariable} " +
+            "<foreach collection='list' item='item' index='index'    separator=';' > " +
+            "update student_class set grade= #{item.grade,jdbcType=INTEGER} " +
+            "where sno = #{item.sno,jdbcType=INTEGER} and curricula_variable = #{item.curriculaVariable,jdbcType=VARCHAR} " +
             "</foreach>" +
             "</script>"})
     void batchGradeUpdate(@Param("list")List<StudentClass> list);
@@ -135,4 +135,20 @@ public interface TeacherMapper {
             "where curricula_variable = #{curriculaVariable,jdbcType=VARCHAR}"
     })
     void teacherTimeUpdate(String curriculaVariable, String timePeriod);
+
+    @Update({"<script>"  +
+            "<foreach collection='list' item='item' index='index'    separator=';' > " +
+            "update course_class set time_period= #{item.timePeriod,jdbcType=VARCHAR} " +
+            "where  curricula_variable = #{item.curriculaVariable,jdbcType=VARCHAR} " +
+            "</foreach>" +
+            "</script>"})
+    void batchTeacherTimeUpdate(@Param("list")List<CourseClass> list);
+
+    @Update({"<script>"  +
+            "<foreach collection='list' item='item' index='index'    separator=';' > " +
+            "update teacher_class set time_period= #{item.timePeriod,jdbcType=VARCHAR} " +
+            "where curricula_variable = #{item.curriculaVariable,jdbcType=VARCHAR} " +
+            "</foreach>" +
+            "</script>"})
+    void batchCourseTimeUpdate(@Param("list")List<CourseClass> list);
 }

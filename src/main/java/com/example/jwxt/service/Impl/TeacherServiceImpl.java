@@ -271,4 +271,11 @@ public class TeacherServiceImpl implements TeacherService {
         teacherMapper.teacherTimeUpdate(curriculaVariable,timePeriod);
         return ServerReturnObject.createSuccessByMessage("排课成功！");
     }
+
+    @Override
+    public ServerReturnObject batchTimeUpdate(List<CourseClass> courseClasses) {
+        teacherMapper.batchCourseTimeUpdate(courseClasses);
+        teacherMapper.batchTeacherTimeUpdate(courseClasses);
+        return ServerReturnObject.createSuccessByMessage("排课成功！");
+    }
 }

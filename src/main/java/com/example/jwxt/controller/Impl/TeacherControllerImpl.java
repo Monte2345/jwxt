@@ -3,6 +3,7 @@ package com.example.jwxt.controller.Impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.example.jwxt.controller.TeacherController;
+import com.example.jwxt.entity.CourseClass;
 import com.example.jwxt.entity.StudentClass;
 import com.example.jwxt.entity.StudentClasses;
 import com.example.jwxt.entity.Teacher;
@@ -74,13 +75,13 @@ public class TeacherControllerImpl implements TeacherController {
     }
 
     @RequestMapping("batchGradeUpdate")
-    public ServerReturnObject batchGradeUpdate(@RequestBody String str)  {
+    public ServerReturnObject batchGradeUpdate(@RequestBody List<StudentClass> studentClasses)  {
 
 //        for(int i = 0;i<studentClasses.length;i++)
 //        {
 //            list.add(studentClasses[i]);
 //        }
-        List<StudentClass> studentClasses = JSON.parseArray(str,StudentClass.class);
+
         return teacherService.batchGradeUpdate(studentClasses);
     }
 
@@ -114,6 +115,11 @@ public class TeacherControllerImpl implements TeacherController {
     @RequestMapping("AllCourseClassView")
     public ServerReturnObject AllCourseClassView() {
         return courseClassService.AllcourseClassView();
+    }
+
+    @RequestMapping("batchTimeUpdate")
+    public ServerReturnObject batchTimeUpdate(@RequestBody  List<CourseClass>courseClasses) {
+        return teacherService.batchTimeUpdate(courseClasses);
     }
 
     @RequestMapping("saveUsers")

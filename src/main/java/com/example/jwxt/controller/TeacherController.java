@@ -1,10 +1,12 @@
 package com.example.jwxt.controller;
 
+import com.example.jwxt.entity.CourseClass;
 import com.example.jwxt.entity.StudentClass;
 import com.example.jwxt.entity.StudentClasses;
 import com.example.jwxt.entity.Teacher;
 import com.example.jwxt.support.returnEntity.ServerReturnObject;
 import org.apache.tomcat.util.json.ParseException;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -31,5 +33,8 @@ public interface TeacherController {
     ServerReturnObject singleTimeUpdate(String curriculaVariable,String timePeriod);
 
     ServerReturnObject AllCourseClassView();
+
+    ServerReturnObject batchTimeUpdate(@RequestBody  List<CourseClass>courseClasses);
+
 
 }
